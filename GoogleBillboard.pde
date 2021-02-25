@@ -9,8 +9,20 @@ public void setup()
       double doubleSegment = Double.parseDouble(segment);
       if (isPrime(doubleSegment) == true)
       {
+        System.out.println("Puzzle 1");
         System.out.println("first 10-digit prime found in consecutive digits of 'e': " + segment);
         break;
+      }
+    }
+    
+    System.out.println("Puzzle 2:");
+    int count = 0;
+    for (int i = 0; i< eNew.length()-9; i++)
+    {
+      String segment = eNew.substring(i, i+10);
+      if (findSum(segment) == 49) {
+      count ++;
+      System.out.println("f(" + count + ") = " + segment);
       }
     }
 }  
@@ -35,3 +47,14 @@ public boolean isPrime(double dNum)
    }
   return true;
 } 
+
+public double findSum(String dNum)
+{
+  int sum = 0;
+  for (int i = 0; i < dNum.length(); i++){
+    String segment = dNum.substring(i, i+1);
+    double doubleSegment = Double.parseDouble(segment);
+    sum += doubleSegment;
+  }
+  return sum;
+}
